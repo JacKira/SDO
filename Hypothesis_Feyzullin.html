@@ -15077,7 +15077,7 @@ jp-needs-light-background
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <div><font size="4" face = 'Times New Roman'>Построим гистграммы распределения времени по каждому из заданий:</font>
-<img src='distrib.png' style = "width:70%; height:70%; padding:0; border:0" hspace = "0" vspace="0"></div>
+<img src='https://github.com/JacKira/SDO/blob/main/distrib.png?raw=1' style = "width:70%; height:70%; padding:0; border:0" hspace = "0" vspace="0"></div>
 </div>
 </div>
 </div>
@@ -15138,6 +15138,24 @@ jp-needs-light-background
 </div>
 </div>
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Distribution&#39;</span><span class="p">:[],</span> <span class="s1">&#39;difference_p_value&#39;</span><span class="p">:[]})</span>
+<span class="n">df_results</span><span class="o">.</span><span class="n">Distribution</span> <span class="o">=</span> <span class="n">df_results</span><span class="o">.</span><span class="n">Distribution</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">df_results</span><span class="o">.</span><span class="n">difference_p_value</span> <span class="o">=</span> <span class="n">df_results</span><span class="o">.</span><span class="n">difference_p_value</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15433,7 +15451,7 @@ jp-needs-light-background
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><p style = 'text-align:justify'><font size = "3"  face = 'Times New Roman'>Построим на графике эмпиричускую плотность распреления (наблюдаемую нами) и теоретическую (построенную с использованием оцененных параметров):</font></p></p>
 <div>
-<img src='est_plot.png' style = "width:40%; height:40%; padding:0; border:0" hspace = "0" vspace="0"></div>
+<img src='https://github.com/JacKira/SDO/blob/main/est_plot.png?raw=1' style = "width:40%; height:40%; padding:0; border:0" hspace = "0" vspace="0"></div>
 </div>
 </div>
 </div>
@@ -15525,11 +15543,67 @@ jp-needs-light-background
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Проверяем гипотезу</span>
-<span class="n">stats</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span>
     <span class="n">f_obs</span><span class="o">=</span><span class="n">observations</span><span class="p">,</span> 
     <span class="n">f_exp</span><span class="o">=</span><span class="n">theory</span><span class="p">,</span> 
     <span class="n">ddof</span><span class="o">=</span><span class="mi">2</span> <span class="c1"># не забываем, что мы оценили 2 параметра по выборке</span>
 <span class="p">)</span>
+<span class="n">df_results</span><span class="o">=</span><span class="n">df_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Distribution&#39;</span><span class="p">:</span><span class="s1">&#39;Хи-квдарат Пирсона&#39;</span><span class="p">,</span> <span class="s1">&#39;difference_p_value&#39;</span><span class="p">:</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]},</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">res</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>C:\Users\Kirill\AppData\Local\Temp\ipykernel_2768\3163380653.py:7: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df_results=df_results.append({&#39;Distribution&#39;:&#39;Хи-квдарат Пирсона&#39;, &#39;difference_p_value&#39;:res[1]}, ignore_index = True)
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[&nbsp;]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>Power_divergenceResult(statistic=7.401716536060914, pvalue=0.38828416182152853)</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_results</span>
 </pre></div>
 
      </div>
@@ -15551,9 +15625,38 @@ jp-needs-light-background
 
 
 
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>Power_divergenceResult(statistic=7.401716536060914, pvalue=0.38828416182152853)</pre>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Distribution</th>
+      <th>difference_p_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Хи-квдарат Пирсона</td>
+      <td>0.388284</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 </div>
 
 </div>
@@ -15635,6 +15738,8 @@ jp-needs-light-background
     <span class="n">f_exp</span><span class="o">=</span><span class="n">theory</span><span class="p">,</span>
     <span class="n">ddof</span><span class="o">=</span><span class="mi">2</span>
 <span class="p">)</span>
+<span class="n">df_results</span><span class="o">=</span><span class="n">df_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Distribution&#39;</span><span class="p">:</span><span class="s1">&#39;Гамма распределение&#39;</span><span class="p">,</span> <span class="s1">&#39;difference_p_value&#39;</span><span class="p">:</span><span class="n">p_value</span><span class="p">},</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
 <span class="k">if</span> <span class="n">p_value</span> <span class="o">&gt;</span> <span class="n">alpha</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Для задания </span><span class="si">{</span><span class="n">task_number</span><span class="si">}</span><span class="s1"> H0 не отвергнута (p_value = </span><span class="si">{</span><span class="n">p_value</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;C параметрами a = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">; loc = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">loc1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">; scale = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">scale1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -15664,6 +15769,19 @@ jp-needs-light-background
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Для задания 0 H0 не отвергнута (p_value = 0.366)
 C параметрами a = 5.55; loc = 107.53; scale = 49.99
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>C:\Users\Kirill\AppData\Local\Temp\ipykernel_2768\2308026463.py:33: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df_results=df_results.append({&#39;Distribution&#39;:&#39;Гамма распределение&#39;, &#39;difference_p_value&#39;:p_value}, ignore_index = True)
 </pre>
 </div>
 </div>
@@ -15766,7 +15884,333 @@ jp-needs-light-background
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p style = 'text-align:justify'><font size = "3"  face = 'Times New Roman'>Отобразим полученное распределение:<br>Как видно, подобранное Гамма распределение достаточно хорошо описыват распределение времени выполнения задания 0</font>
 <div>
-<img src='gamma_est_plot.png' style = "width:40%; height:40%; padding:0; border:0" hspace = "0" vspace="0"></div></p>
+<img src='https://github.com/JacKira/SDO/blob/main/gamma_est_plot.png?raw=1' style = "width:40%; height:40%; padding:0; border:0" hspace = "0" vspace="0"></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="%D0%9B%D0%BE%D0%B3-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5">&#1051;&#1086;&#1075; &#1085;&#1086;&#1088;&#1084;&#1072;&#1083;&#1100;&#1085;&#1086;&#1077;<a class="anchor-link" href="#%D0%9B%D0%BE%D0%B3-%D0%BD%D0%BE%D1%80%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5">&#182;</a></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p style = 'text-align:justify'><font size = "3"  face = 'Times New Roman'>Получим параметры подходящих лог - нормальных распределений и проверим гипотезу согласия наблюдаемых выборок полученным лог-нормальным:</font></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span> <span class="c1"># уровень значимости</span>
+<span class="n">to_plot</span> <span class="o">=</span> <span class="p">[]</span>
+
+
+<span class="n">intervals</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()]</span>
+<span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">],</span> <span class="n">q</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="c1"># составляем вектор наблюдаемых частот</span>
+<span class="n">observations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">observations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">][(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])]))</span>
+
+<span class="c1"># Определяем оценки параметров Гамма-распределения методом ММП</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">loc2</span><span class="p">,</span> <span class="n">scale2</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">])</span>
+
+<span class="c1"># Составляем теоретических ветор частот</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+<span class="n">theory</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">intervals</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale2</span><span class="p">)</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale2</span><span class="p">)</span>
+    <span class="n">theory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">intervals</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale2</span><span class="p">)</span>
+<span class="n">theory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">theory</span><span class="p">))</span>
+
+<span class="c1"># Проверяем гипотезу</span>
+<span class="n">stat</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">chisquare</span><span class="p">(</span>
+    <span class="n">f_obs</span><span class="o">=</span><span class="n">observations</span><span class="p">,</span> 
+    <span class="n">f_exp</span><span class="o">=</span><span class="n">theory</span><span class="p">,</span>
+    <span class="n">ddof</span><span class="o">=</span><span class="mi">2</span>
+<span class="p">)</span>
+<span class="n">df_results</span><span class="o">=</span><span class="n">df_results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;Distribution&#39;</span><span class="p">:</span><span class="s1">&#39;Лог нормальное&#39;</span><span class="p">,</span> <span class="s1">&#39;difference_p_value&#39;</span><span class="p">:</span><span class="n">p_value</span><span class="p">},</span> <span class="n">ignore_index</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">p_value</span> <span class="o">&gt;</span> <span class="n">alpha</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Для задания </span><span class="si">{</span><span class="n">task_number</span><span class="si">}</span><span class="s1"> H0 не отвергнута (p_value = </span><span class="si">{</span><span class="n">p_value</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;C параметрами a = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">; loc = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">loc1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">; scale = </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">scale1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">to_plot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">task_number</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Для задания </span><span class="si">{</span><span class="n">task_number</span><span class="si">}</span><span class="s1"> H0 отвергнута (p_value = </span><span class="si">{</span><span class="n">p_value</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Для задания 0 H0 не отвергнута (p_value = 0.355)
+C параметрами a = 0.32; loc = 107.53; scale = 49.99
+</pre>
+</div>
+</div>
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
+<pre>C:\Users\Kirill\AppData\Local\Temp\ipykernel_2768\2887470659.py:33: FutureWarning: The frame.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  df_results=df_results.append({&#39;Distribution&#39;:&#39;Лог нормальное&#39;, &#39;difference_p_value&#39;:p_value}, ignore_index = True)
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p style = 'text-align:justify'><font size = "3"  face = 'Times New Roman'>Видим, что для задания 0 мы можем сделать вывод о том, что распределение времени выполнения задания соответствует закону Гамма-распределению с подобранными параметрами.  <br><br>
+Отобразим полученное распределение:
+</font>
+</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">intervals</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()]</span>
+<span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">],</span> <span class="n">q</span><span class="p">),</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">intervals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">observations</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">observations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">][(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="n">intervals</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])]))</span>
+
+
+<span class="c1"># Составляем теоретических ветор частот</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+<span class="n">theory</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">intervals</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">intervals</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale2</span><span class="p">)</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">intervals</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale2</span><span class="p">)</span>
+    <span class="n">theory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">n</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">intervals</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale2</span><span class="p">)</span>
+<span class="n">theory</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">theory</span><span class="p">))</span>
+
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Задание </span><span class="si">{</span><span class="n">task_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">task_number</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">element</span><span class="o">=</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">stat</span><span class="o">=</span><span class="s1">&#39;density&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;histplot task </span><span class="si">{</span><span class="n">task_number</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="n">lnorm</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">lognorm</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">loc2</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">scale2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">intervals</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">intervals</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">lnorm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;LogNorm pdf(task </span><span class="si">{</span><span class="n">task_number</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">);</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;lognorm_est_plot.png&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+
+<div class="jp-RenderedImage jp-OutputArea-output ">
+<img src="data:image/png;base64,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X2qCMXz4cDp2zHiHgNP5ZX8q98rJ9wnkm2++YePGjWzcuJExY8Zw553Z2aststiMehNyixa55xUr4McfwxuLiSzJycncfvvt1KtXj86dO3P06FEA+vfvz6RJkwB48MEHqVu3LrGxsdx///389NNPTJ48mWHDhtGoUSM2b95M+/btufvuu2nVqhX169dn8eL0Ld//+9//6NChA7GxsXTo0IHt27cHvFeKQOfGjh3LRRddRMOGDbn66qs5cuQIAJ9++in169enYcOGtGvXLt17T506lZYtW7J37940x7/66iv69u2LiNCiRQv279/Prl27cuz7Gw75eu0vkzsWLYK6dWH3bnj1Vbj44nBHZPzdfTesXJmz92zUCF5/PfNrNm7cyCeffMLYsWO59tpr+eyzz+jTp0/q+T/++IMvvviCdevWISLs37+fMmXK0KNHD7p3784111yTeu3hw4f56aef+PHHH7nllltYvXp1mvcaPHgwffv2pV+/frz77rsMGTKEL7/8MuC9AFq1apXuXJkyZbj99tsBePTRRxk3bhz//Oc/GT58ONOnT6dSpUrs378/zX2++OILXn31VaZNm0bZsmXTnPv111+pUuXv8UWVK1fm119/pWLFipl/4yKY1VRMSJ08CUuWuERy550wZQps2BDuqEykiImJoVGjRgA0bdqUbdu2pTlfqlQpihQpwm233cbnn39OsWLFMrzX9ddfD0C7du04ePBgul/uCxYs4IYbbgDgpptuYt68eacc7+rVq2nbti0NGjTgo48+Ys0a19XbunVr+vfvz9ixY0lO/rsrd/bs2bz44otMnTo1XUIB16fiL6+PyLOaigmpdevg4EFo3hy6dIEXX4Q33oBRo8IdmfGVVY0iVAoXLpz6Ojo6OrX5K0WBAgVYvHgx3333HRMmTODNN9/k+++/D3gv/1/GWf1yzs4v7/79+/Pll1/SsGFD3n//febMmQPA22+/zaJFi5g6dSqNGjVipVftq169Olu2bGHDhg3ExcWlu1/lypXZsePved4JCQmcd955pxxXJLGaigmphQuhCtvptGs85779JJMufIyose9wYN7P1mtvsvTXX39x4MABunbtyuuvv576y7pkyZIcOnQozbX//e9/AZg3bx6lS5emdOnSac63atWKCRMmAPDRRx/Rpk2bDO+Vwv/coUOHqFixIomJiXz00Uepxzdv3kzz5s0ZPnw4Z511VmqiqFq1Kp9//jl9+/ZNrdX46tGjBx988AGqysKFCyldunSebvoCq6mYUFq8mOZPPMZ2ZsBDgAjdgStUoS3QsCHcey/06QNR9veNSe/QoUP07NmTY8eOoaq89tprAPTu3Zvbb7+dkSNHpnboly1bllatWnHw4EHefffddPcaOXIkt9xyCy+//DIVKlTgvffeC3ivCy64ILWM/7mnn36a5s2bU7VqVRo0aJCacIYNG8bGjRtRVTp06EDDhg1TE2Dt2rX56KOP6NWrF1OmTElz/65duzJt2jRq1KhBsWLFUmPK01Q13z6aNm2qJgROnFC95x5VEd1d4Fx974KnVX/+WTUxUTU5WW9qvVkfKj1Kk2MbqoJqXJzqL7+EO+p8Z+3ateEOIcdcfPHFumTJknCHcUYK9P8EWKoZ/F61Pw9NzjpwALp2hddeI/HWgdRMXs/m6x+F+vWhQAGIiuKGR6vz/IFBfHzfcvjPf2DbNmjaFLymCWNM3mVJxeScI0fg8sthzhx4910W3DSaA1qKFi3SXtalixti/OrrUeiNfWDVKpdUrr/ejTk25hTNmTMnYEe4yX2WVEzOSE6Ga691k1ImTICbb06d9NisWdpLRdy8iBUr4IcfgPPOg5kz4Zpr4L774JVXcjt6Y0wOsaRicsZTT8HUqW6s8NVXAy6/VK8OgXYY6NMHzjrLp2JSuLBLRtddB8OGQYCOVmNM5LOkYk7fzJnwzDPQvz8MHJh6eNEiNz8lkKJFYdAgv8mQ0dHwwQeufez22yGD+QjGmMhlScWcnr/+gttugzp10sxo3LkTEhIyTirgkkqhQm4yZKpCheDTT939rr3WdeIbY/IMSyrm9Dz+OGzfDv/+N/gsoZHSn5JZUjnnHNcM9t578McfPidKloQvv4SkJPjHP+DEiZCEbsKvRIkSp32POXPmICJMmTIl9Vj37t1TZ7uH25w5c+jevTsAx48fp2PHjjRq1Ch1suY111zDli1bAHjuueey/T7t27dn6dKlmV6zdetWmjdvTs2aNbnuuus44f1sff311zzxxBPZfm9fllRM9i1f7qoZAwdCq1ZpTi1aBAULukUFM3PPPXD0KLzzjt+JmjVh/HjXm//YYzkatjnzVK5cmWefDbhDRlB81+sKpRUrVpCYmMjKlSu57rrrWLNmDcnJyVSvXh04vaQSjAceeIB77rmHjRs3UrZsWcaNGwdAt27dmDx5cuqqy6fDkorJHlW4/34oXx6efz7d6YULXUIpUiTz29SvD507w7/+FaBC0rMnDBgAL7/shimbfGHlypW0aNGC2NhYrrrqKv78808AlixZQmxsLC1btmTYsGFpNvhq2LAhpUuXZubMmenu991339G4cWMaNGjALbfcwvHjxwGoVq0aw4cPp02bNnz66adUq1aNhx9+mJYtWxIXF8fy5cvp0qULF1xwAW+//Xa6+27bto06derQr18/YmNjueaaa1J/KX/77bfUqVOHNm3a8PnnnwOwe/du+vTpw8qVK1OX0v/oo4/o2bMn4Jb4P3r0KI0aNeLGG28E4Morr6Rp06bUq1ePMWPGAC4B9u/fn/r169OgQYPUVQZSnDx5kn79+vHoo4+mOa6qfP/996krLvfr148vv/wScOugtW/fnq+//voU/qUykNGsyPzwsBn1p+Hbb91s+DfeSHcqKUm1eHHVwYODu9U337hbffBBgJN//aVas6ZqlSqqBw+eXswmjTQzpYcOVb344px9DB2aZQzFixdPd6xBgwY6Z84cVVV97LHHdKh3n3r16un8+fNVVfWBBx7QevXqqarq7NmztVu3bvrjjz9qu3btVFW1W7duOnv2bD169KhWrlxZ169fr6qqN910k7722muqqlq1alV98cUXU9+3atWqOnr0aFVVvfvuu7VBgwZ68OBB3b17t1aoUCFdnFu3blVA582bp6qqN998s7788sup77lhwwY9efKk9urVS7t165Ym1hTt2rXT+Pj4DL8f+/btU1XVI0eOaL169XTv3r26dOlS7dixY+o1f/75p6q6VQUWLFigvXv31meeeSZdvHv27NELLrgg9evt27enfg9VVT/88EMdHOCH1mbUm9A7eRIeeABiYuCOO9KdXrMGDh/OvD/FV8pkyNdeC7DGZPHibkRYQoI1g+UDBw4cYP/+/VzsbbrTr18/fvzxR/bv38+hQ4do5TWzpixh76tt27YAzJ07N/XY+vXriYmJoVatWmnul+K6665Lc48ePXoA0KBBA5o3b07JkiWpUKECRYoUSbeUPkCVKlVo3bo1AH369GHevHmsW7eOmJgYatasiYik2R/G365du6gQaMy9Z+TIkTRs2JAWLVqwY8cONm7cmLry8T//+U++/fZb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"
+class="
+jp-needs-light-background
+"
+>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p style = 'text-align:justify'><font size = "3"  face = 'Times New Roman'>Отобразим полученное распределение:<br>Как видно, подобранное Гамма распределение достаточно хорошо описыват распределение времени выполнения задания 0</font>
+<div>
+<img src='lognorm_est_plot.png' style = "width:40%; height:40%; padding:0; border:0" hspace = "0" vspace="0"></div></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3><font  face = 'Times New Roman'> Сравнение приближений</font></h3>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p style = 'text-align:justify'><font size = "3"  face = 'Times New Roman'>Если нас интересует, какой закон распределения лучше всего описывает распределение времени выполнения задания, то нужно выбрать распределение с наибольшим p_value, которое характеризует статистическую занчимость отличия одной выборки от другой. <br>То есть если  p_value <= α, то выборки не однородны, иначе однородны, что нам и нужно.</font></p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df_results</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;difference_p_value&#39;</span><span class="p">,</span> <span class="n">ascending</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output " data-mime-type="text/html">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Distribution</th>
+      <th>difference_p_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Хи-квдарат Пирсона</td>
+      <td>0.388284</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Гамма распределение</td>
+      <td>0.365969</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Лог нормальное</td>
+      <td>0.355031</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p style = 'text-align:justify'><font size = "3"  face = 'Times New Roman'>Как видно в таблице, Хи - квадрат Пирсона лучше всего описывает распределение времени выполнения задания 0</font></p>
 </div>
 </div>
 </div>
